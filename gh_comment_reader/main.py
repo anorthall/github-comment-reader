@@ -2,7 +2,7 @@
 import typer
 from rich.console import Console
 
-from github_comment_reader.cli import fetch_command
+from .cli import fetch_command
 
 console = Console()
 

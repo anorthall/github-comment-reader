@@ -7,7 +7,7 @@ from gql.transport.aiohttp import AIOHTTPTransport
 from pydantic import BaseModel
 from rich.console import Console
 
-from . import GITHUB_COMMENTS_BASE_DIR
+from . import GH_COMMENT_READER_BASE_DIR
 from .models import GitHubRepoResponse, ParsedComment
 
 console = Console()
@@ -26,7 +26,7 @@ class GitHubPRComments(BaseModel):
 
         owner, repo, pr_number = pr_url_match.groups()
 
-        with (GITHUB_COMMENTS_BASE_DIR / "queries" / "pr_comments.gql").open() as f:
+        with (GH_COMMENT_READER_BASE_DIR / "pr_comments.gql").open() as f:
             query = f.read()
 
         with console.status(f"[bold green]Fetching comments from PR #{pr_number}..."):

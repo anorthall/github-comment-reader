@@ -4,4 +4,4 @@ __version__ = "0.1.0"
 
 from pathlib import Path
 
-GITHUB_COMMENTS_BASE_DIR = Path(__file__).parent
+GH_COMMENT_READER_BASE_DIR = Path(__file__).parent
