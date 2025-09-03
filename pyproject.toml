@@ -1,7 +1,7 @@
 [project]
 name = "gh-comment-reader"
 authors = [{ name = "Andrew Northall", email = "andrew@northall.me.uk" }]
-version = "0.1.4"
+version = "0.1.5"
 description = "GitHub Comment Reader - CLI tool for easily reading GitHub PR comments"
 readme = "README.md"
 requires-python = ">=3.13"

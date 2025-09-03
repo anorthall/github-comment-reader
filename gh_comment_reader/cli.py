@@ -1,3 +1,4 @@
+import os
 from typing import Annotated
 
 import typer
@@ -43,6 +44,13 @@ def fetch_command(
         ),
     ] = False,
 ) -> None:
+    if not os.getenv("GITHUB_TOKEN"):
+        console.print(
+            "[red]Error: No GitHub token provided. Set the GITHUB_TOKEN environment variable.\n"
+            "This can be obtained via the GitHub CLI:\n\n[/red][white] $ gh auth token[/white]"
+        )
+        raise typer.Exit(code=1)
+
     if not pr_url.startswith("https://github.com/"):
         console.print("[red]Error: Invalid GitHub URL[/red]")
         raise typer.Exit(code=1)
