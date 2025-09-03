@@ -75,8 +75,8 @@ class ParsedComment(BaseModel):
     path: str | None = None
     line: int | None = None
 
-    commit: str = None
-    author: str = None
+    commit: str | None = None
+    author: str | None = None
     is_bot: bool = False
 
     created_at: datetime

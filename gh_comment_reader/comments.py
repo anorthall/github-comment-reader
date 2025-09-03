@@ -44,19 +44,19 @@ class GitHubPRComments(BaseModel):
             transport = AIOHTTPTransport(url=GITHUB_GRAPHQL_API_URL, headers=headers)
             client = Client(transport=transport, fetch_schema_from_transport=False)
 
-            request = GraphQLRequest(
-                query,
-                variable_values={
-                    "owner": owner,
-                    "repo": repo,
-                    "prNumber": int(pr_number),
-                },
-            )
-
             cursor = None
             all_review_threads = []
             while True:
-                request.variable_values["cursor"] = cursor
+                request = GraphQLRequest(
+                    query,
+                    variable_values={
+                        "owner": owner,
+                        "repo": repo,
+                        "prNumber": int(pr_number),
+                        "cursor": cursor,
+                    },
+                )
+
                 repository = GitHubRepoResponse(**client.execute(request)).repository
                 review_threads = repository.pull_request.review_threads
                 all_review_threads.extend(review_threads.nodes)
