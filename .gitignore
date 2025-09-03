@@ -13,3 +13,4 @@ wheels/
 .idea/
 .claude/
 .dmypy.json
+.DS_Store
