@@ -12,3 +12,4 @@ wheels/
 # Localised
 .idea/
 .claude/
+.dmypy.json
